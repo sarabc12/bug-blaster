@@ -46,13 +46,21 @@ export default function TicketForm() {
       <fieldset className="priority-fieldset">
         <legend>Priority</legend>
 
-        {
-          Object.entries(priorityLabels).map(([value, label]) => (
-            <label></label>
-          ))
-        }
-
+        {Object.entries(priorityLabels).map(([value, label]) => (
+          <label key={value} className="priority-label">
+            <input
+              type="radio"
+              value={value}
+              checked={priority === value}
+              className="priority-input"
+              onChange={(e) => setPriority(e.target.value)}
+            ></input>
+            {label}
+          </label>
+        ))}
       </fieldset>
+
+      <button type="submit" className="button">Submit</button>
     </form>
   );
 }
